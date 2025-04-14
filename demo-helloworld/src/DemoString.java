@@ -35,11 +35,11 @@ public class DemoString {
 
     System.out.println(name.charAt(name.length()/2));
     name = "Vincent";
-    System.out.println(name.charAt(0));
+    //System.out.println(name.charAt(0));
     System.out.println(name.charAt(name.length()/2));
-    System.out.println(name.charAt(name.length()/2-1));
-    System.out.println(name.charAt(name.length()/2+1));
-    System.out.println(name.charAt((name.length()/2)-1));
+    //System.out.println(name.charAt(name.length()/2-1));
+    //System.out.println(name.charAt(name.length()/2+1));
+    //System.out.println(name.charAt((name.length()/2)-1));
 
 
   }

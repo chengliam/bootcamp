@@ -14,5 +14,6 @@ public class Tutor {
     a2.setBalance(500.0);
     System.out.println(a1.getBalance());
     System.out.println(a2.getBalance());
+    
   }
 }

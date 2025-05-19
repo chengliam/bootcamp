@@ -1,106 +1,109 @@
-import com.azul.crs.client.service.VMToolingClient;
-
 public class DemoString {
   public static void main(String[] args) {
-    // String is NOT prinitve, which consist of a set char values
+    // String is NOT primitive, which consist of a set of char values
     String s = "John";
-    String s2 = "Dear Sir";
+    String s2 = "Dear Sir,";
 
-    // 8 Primitive -> store values ONLY
-    // String -> Store value +functions
-    // String can not use "=="
+    // 8 Primitives -> store values ONLY
+    // String -> Store values + functions
+    String s3 = "Steven";
+    s3 = "Vincent";
+    System.out.println(s3); // Vincent
 
     // Function 1: equals()
-    String s3 = "Liam";
-    System.out.println(s3);
-    s3 = "Kiam";
-    System.out.println(s3);
-    System.out.println(s3.equals("Liam"));
+    System.out.println(s3.equals("Vincent")); // true
+    System.out.println(s3.equals("vincent")); // false, case sensitive
 
-    //Function 2: length()
-    //index starts with 0
-    //can not use (-)1, but ok 1
-    System.out.println(s3.length());
+    // Function 2: length()
+    System.out.println(s3.length()); // 7
 
-    //Function 3: charAt()
-    s3 = "djfhasd";
-    System.out.println(s3.charAt(s3.length()-1));
+    // Function 3: charAt()
+    // index starts with 0
+    // index range 0-6, length=7
+    System.out.println(s3.charAt(2)); // 'n', the char at position 3
+    // System.out.println(s3.charAt(7)); // out of range
+    // System.out.println(s3.charAt(-1)); // out of range
 
+    // Question
+    // print the last character of s3
+    s3 = "Steven";
+    // length(), charAt()
+    System.out.println(s3.charAt(s3.length() - 1)); // n
 
-    //Home work
-    //Find the mniddle character of name
-    String name = "Joey"; //0
-    //Joey -> e
-    //Vincent --> c
+    // Find the middle character of name
+    String name = "Vincent"; // o
+    // Joey -> e
+    // Vincent -> c
+    System.out.println(name.charAt(name.length() / 2));
 
-    System.out.println(name.charAt(name.length()/2));
-    name = "Vincent";
-    //System.out.println(name.charAt(0));
-    System.out.println(name.charAt(name.length()/2));
-    //System.out.println(name.charAt(name.length()/2-1));
-    //System.out.println(name.charAt(name.length()/2+1));
-    //System.out.println(name.charAt((name.length()/2)-1));
-
-    // Function 4: indexOf()
+    // Function 4: indexOf(), lastIndexOf()
     String s4 = "Sally";
-    System.out.println(s4.indexOf('a')); // show 1, "a" in the position 1
-    System.out.println(s4.indexOf('b')); // show -1, means there are no "b"
-    System.out.println(s4.indexOf('l')); // show 2, cause 
-    System.out.println(s4.lastIndexOf('l'));
-    System.out.println(s4.indexOf("ll"));
+    System.out.println(s4.indexOf('a')); // 1
+    System.out.println(s4.indexOf('b')); // -1
+    System.out.println(s4.indexOf('l')); // 2, first character of l
+    System.out.println(s4.lastIndexOf('l')); // 3, last character of l
+    System.out.println(s4.indexOf("ll")); // 2
+    System.out.println(s4.lastIndexOf("ll")); // 2, last character of l
 
     // Function 5: contains()
-    System.out.println(s4.contains("ll"));
-    System.out.println(s4.contains("lll"));
+    System.out.println(s4.contains("ll")); // true, Sally contains ll
+    System.out.println(s4.contains("lll")); // false, Sally does not contain lll
 
-    //Function 6: startWith(), endWith()
-    System.out.println(s4.startsWith("Sa"));
-    System.out.println(s4.startsWith("Sab"));
-    System.out.println(s4.endsWith("lly"));
+    if (s4.contains("ll")) {
+      System.out.println("The name contains \"ll\"");
+    }
 
-    //Function 7: empty()
-    String s5 = ""; //empty String
+    // Function 6: startsWith(), endsWith()
+    System.out.println(s4.startsWith("Sa")); // true
+    System.out.println(s4.startsWith("Sab")); // false
+    System.out.println(s4.endsWith("lly")); // true
+    System.out.println(s4.endsWith("llly")); // false
+
+    if (s4.startsWith("sa")) {
+      System.out.println("hello");
+    } else {
+      System.out.println("goodbye"); // print
+    }
+
+    // Function 7 : isEmpty()
+    String s5 = ""; // empty String
     System.out.println(s5.isEmpty()); // true
     System.out.println(s4.isEmpty()); // false
 
     if (s5.isEmpty()) {
-      System.out.println("s5 is really an empty String");
+      System.out.println("s5 is really an empty String.");
     } else {
-      System.out.println("s5 is NOT an empty String");
+      System.out.println("s5 is NOT an empty String.");
     }
 
-    if (s4.contains("ll")) {
-      System.out.println("s4 is contains \"ll\"");
-    }
-
-    //Function 8: contcat
+    // Function 8: concat()
     String s6 = "abc";
-    System.out.println(s6.concat("Liam")); // can customis
-    System.out.println(s6);
+    System.out.println(s6.concat("vincent")); // abcvincent
+    System.out.println(s6); // abc
 
-    //Function 9: replace
-    String s7 = "Petter";
-    System.out.println(s7.replace("t", "xo"));
+    // Function 9: replace()
+    String s7 = "hello";
+    System.out.println(s7.replace('l', 'x')); // hexxo
+    System.out.println(s7.replace("ll", "abc")); // heabco
+    System.out.println(s7); // hello
 
-    // Function 10: substring
-    String s10 = "hello world";
-    System.out.println(s10.substring(4, 7)); 
+    // Function 10: substring()
+    String s8 = "hello world";
+    System.out.println(s8.substring(4, 7)); // "o w"
 
-    // Function 11: toLowerCase(), toUppweCase
-    String s11 = "Hello";
-    System.out.println(s11.toUpperCase());
-    System.out.println(s11.toLowerCase());
+    // Function 11: toLowerCase(), toUpperCase()
+    String s9 = "Hello";
+    System.out.println(s9.toUpperCase()); // HELLO
+    System.out.println(s9.toLowerCase()); // hello
 
-    // Function 12: valueOf() --> Conversion
-    int i12 = 3;
-    String s12 = String.valueOf(i12);
-    System.out.println(s12); // print out 3
-    String ss12 = String.valueOf(3.4);
-    System.out.println(ss12); // print out 3.4
+    // Function 12: valueOf() -> Conversion
+    int x = 3;
+    String ss = String.valueOf(x);
+    System.out.println(ss); // 3
+    String ss2 = String.valueOf(3.3);
+    System.out.println(ss2); // 3.3
 
-    double d12 = Double.valueOf("3.3");
-    System.out.println(d12); // print out 3.3
-
+    double d1 = Double.valueOf("3.3");
+    System.out.println(d1); // 3.3
   }
-  
 }

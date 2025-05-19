@@ -3,75 +3,52 @@ import java.math.RoundingMode;
 
 public class Person {
   // height, weight
-  private String varName;
-  private double varHeight;
-  private double varWeight;
+  private double height; // meter
+  private double weight; // kg
 
-  //! method:
-  // BMI (overweight) -> double
-  // isOverweight -> boolean (BMI > 25)
-  public void setInfo(String name, double height, double weight) {
-    this.varName = name;
-    this.varHeight = height;
-    this.varWeight = weight;
+  public Person(double height, double weight) {
+    this.height = height;
+    this.weight = weight;
   }
 
-  public String getName() {
-    return this.varName;
+  public void exercise() {
+    this.weight -= 0.1;
   }
 
-  public double getHeight() {
-    return this.varHeight;
+  // ! methods:
+  // BMI -> double
+  public double bmi() {
+    BigDecimal result =
+        BigDecimal.valueOf(this.height).multiply(BigDecimal.valueOf(this.height));
+    return BigDecimal.valueOf(this.weight).divide(result, 2, RoundingMode.HALF_DOWN)
+        .doubleValue();
   }
 
-  public double getWeight() {
-    return this.varWeight;
+  // isOverweight -> boolean (bmi > 25)
+  public boolean isOverweight() {
+    return this.bmi() > 25;
   }
 
-  public double getBMI() {
-    return BigDecimal.valueOf(varWeight).divide(BigDecimal.valueOf(Math.pow(this.varHeight, 2)), 1, RoundingMode.HALF_UP).doubleValue();
-  }
-
-  public String getStatus() {
-    if (getBMI() < 18.5) {
-      return "underweight";
-    } else if (getBMI() >= 18.5 && getBMI() < 25) {
-      return "normal";
-    } else {
-      return "overweight";
-    }
-  }
-
-  public String getAllInfo() {
-    return this.varName + "-" + this.varHeight + "M-" + this.varWeight + "kg-" + this.getBMI();
-  }
-  //main
-  //Person[] -> p1, p2, p3
-  //print out their bmi and weight status
-  //BMI standard
-  //below 18.5 = Underweight
-  //18.5 to 25 = Normal
-  //over 25 = Overweight
+  // main
+  // Person[] -> p1, p2, p3
   // for loop () -> array -> print out their bmi and weight status
   public static void main(String[] args) {
-    Person p1 = new Person();
-    p1.setInfo("Liam", 1.75, 70);
-    Person p2 = new Person();
-    p2.setInfo("kitkit", 1.73, 80);
-    Person p3 = new Person();
-    p3.setInfo("manlong", 1.73, 55);
+    Person p1 = new Person(1.76, 80);
+    Person p2 = new Person(1.5, 50.5);
+    Person p3 = new Person(1.95, 90);
+    System.out.println(p1.bmi()); // 25.83
+    System.out.println(p1.isOverweight()); // true
 
-    System.out.println(p1.getBMI());
-    System.out.println(p2.getStatus());
+    System.out.println(p2.bmi()); // 22.44
+    System.out.println(p2.isOverweight()); // false
 
-    Person[] ppp = new Person[3];
-    ppp[0] = p1;
-    ppp[1] = p2;
-    ppp[2] = p3;
+    Person[] persons = new Person[3];
+    persons[0] = p1;
+    persons[1] = p2;
+    persons[2] = p3;
 
-    for (int i = 0; i < ppp.length; i++) {
-      System.out.println(ppp[i].getBMI() + ", " + ppp[i].getStatus());
+    for (int i = 0; i < persons.length; i++) {
+      System.out.println(persons[i].bmi() + ", " + persons[i].isOverweight());
     }
-
   }
 }

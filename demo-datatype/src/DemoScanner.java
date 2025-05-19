@@ -3,18 +3,15 @@ import java.util.Scanner;
 public class DemoScanner {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
+    System.out.println("Please input a number:");
     int input = scanner.nextInt();
-    String s = "47";
-    if (input % 2 == 0 ) {
-      s = "EVEN ";
+
+    String s = ""; // EVEN or ODD
+    if (input % 2 == 0) {
+      s = "EVEN";
     } else {
-      s = "ODD ";
+      s = "ODD";
     }
-    System.out.println("The input number is an " + s + "number");
-
-
-
-
+    System.out.println("The input number is an " + s + " number.");
   }
-  
 }

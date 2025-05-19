@@ -5,8 +5,13 @@ public class Order {
   // Alternative
   private Item[] items;
 
-  public Order() {
-    this.items = new Item[0];
+  // public Order() {
+  //   this.items = new Item[0];
+  // }
+
+  public Order(Item item) {
+    this.items = new Item[1];
+    this.items[0] = item;
   }
 
   public void add(Item newItem) {
@@ -29,10 +34,11 @@ public class Order {
   }
 
   public static void main(String[] args) {
-    Order order = new Order(); // array length = 0
-
     Item itemA = new Item(99, 2);
-    order.add(itemA); // array length = 1
+
+    Order order = new Order(itemA); // array length = 0
+
+    // order.add(itemA); // array length = 1
 
     Item itemB = new Item(14, 3);
     order.add(itemB); // array length = 2

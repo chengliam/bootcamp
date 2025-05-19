@@ -10,7 +10,7 @@ public class Person {
   //! method:
   // BMI (overweight) -> double
   // isOverweight -> boolean (BMI > 25)
-  public void setInfo (String name, double height, double weight) {
+  public void setInfo(String name, double height, double weight) {
     this.varName = name;
     this.varHeight = height;
     this.varWeight = weight;
@@ -69,10 +69,9 @@ public class Person {
     ppp[1] = p2;
     ppp[2] = p3;
 
-    System.out.println(p1.getAllInfo());
-    System.out.println(p2.getAllInfo());
-    System.out.println(p3.getAllInfo());
-    System.out.println(ppp[0]);
+    for (int i = 0; i < ppp.length; i++) {
+      System.out.println(ppp[i].getBMI() + ", " + ppp[i].getStatus());
+    }
 
   }
 }

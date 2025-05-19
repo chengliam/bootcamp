@@ -34,6 +34,13 @@ public class Circle {
     return this.color;
   }
 
+  public static double area2(double radius) {
+    return BigDecimal.valueOf(radius)
+    .multiply(BigDecimal.valueOf(radius))
+    .multiply(BigDecimal.valueOf(Math.PI))
+    .doubleValue();
+  }
+
   public static void main(String[] args) {
     Circle c1 = new Circle(3.5, "RED");
     System.out.println(c1.area());
@@ -46,6 +53,8 @@ public class Circle {
 
     System.out.println(circles[0].getColor());
     System.out.println(circles[1].area());
+
+    System.out.println(Circle.area2(3.5));
   }
   
 }

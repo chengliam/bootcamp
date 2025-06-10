@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.List;
+
 public interface Flyable {
   void fly();
 
@@ -9,7 +12,7 @@ public interface Flyable {
     Flyable superman = new Flyable() {
       @Override
       public void fly() {
-        System.out.println("Superman is flying...");
+        System.out.println("Superman is flying ... ");
       }
     };
 
@@ -20,10 +23,16 @@ public interface Flyable {
     Flyable superman2 = new Flyable() {
       @Override
       public void fly() {
-        System.out.println("Superman2 is flying...");
+        System.out.println("Superman2 is flying ...");
       }
     };
 
     superman2.fly();
+
+    // ! Normally
+    List<Flyable> flyableObjects = new LinkedList<>();
+    flyableObjects.add(superman);
+    flyableObjects.add(superman2);
+
   }
 }

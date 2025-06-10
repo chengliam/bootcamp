@@ -1,9 +1,10 @@
 public class DemoSwitchExpression {
   public static void main(String[] args) {
-    // "switch" is a bad idea:
-    // 1) you have to remrember to use "break"
-    // 2) there are no range checking
-    // 3) have to manually check if all values ahs been covered
+    // switch is a bad idea:
+    // 1) you have to remember to break
+    // 2) no range checking
+    // 3) eye ball check if all values has been covered
+    // 4) Not allow to do "AND" event
 
     Currency currency = Currency.USD;
     if (currency == Currency.HKD) {
@@ -15,18 +16,41 @@ public class DemoSwitchExpression {
     }
 
     // switch expression
-    // 1) Aviod Duplicate case
-    // 2) Java 21:
-    switch (currency) {
-      case HKD -> System.out.println("Hong Kong Dollar");
-      // case HKD -> System.out.println("Hong Kong Dollar");
-      case USD -> System.out.println("US Dollar");
-      // case CNY -> System.out.println("CNY");
-    }
+    // 1) Avoid Duplicate case
+    // 2) Java 21: missing case -> warning; Java 17: missing value -> error
+    // 3) default case is allowed, but you can ignore
+    // 4) switch expression is good for enum
+
+    Currency amountCurrency = Currency.USD;
+    double amount = 10.0;
+
+    double amountInHKD = switch (amountCurrency) {
+      case HKD -> amount * 1.0;
+      case USD -> amount * 7.85;
+      case CNY -> amount * 1.13;
+    };
+    System.out.println(amountInHKD);
+
+    double amountInHKD2 = switch (amountCurrency) {
+      case HKD -> {
+        System.out.println("No Conversion.");
+        yield amount * 1.0; // "yield" silmiar to "return"
+      }
+      case USD -> {
+        System.out.println("Converting CNY to HKD...");
+        yield amount * 7.85;
+      }
+      case CNY -> {
+        System.out.println("Converting CNY to HKD...");
+        yield amount * 1.13;
+      }
+    };
+    System.out.println(amountInHKD2);
+
   }
-  
 
   public static enum Currency {
     HKD, USD, CNY,;
+    // 50 currency
   }
 }

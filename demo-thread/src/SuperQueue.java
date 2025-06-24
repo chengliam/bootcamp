@@ -1,7 +1,11 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class SuperQueue {
+  private Stack<String> s1;
+  private Stack<String> s2;
+  
   // 2 Stacks to implement SuperQueue (same as Queue, add(), )
 
   public static void main(String[] args) {

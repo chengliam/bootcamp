@@ -16,6 +16,12 @@ import lombok.ToString;
 public class Cat extends Animal {
   private String name;
   private int age;
+  private Calculator calculator;
+
+  public Cat(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
 
   public Cat(String name, int age, double weight) {
     super(weight);
@@ -23,12 +29,17 @@ public class Cat extends Animal {
     this.age = age;
   }
 
-  public String sum1(String name, int x, int y) {
-    return name + sum2(x, y);
+  public Cat(String name, int age, double weight, Calculator calculator) {
+    super(weight);
+    this.name = name;
+    this.age = age;
+    this.calculator = calculator;
   }
 
-  public int sum2 (int x, int y) {
-    return x + y;
+  // ! what is the task of subtract()?
+  // 7 - 10 -> -3
+  public int subtract(int a, int x, int y) {
+    return a - this.calculator.sum(x, y);
   }
 
   public static void main(String[] args) {

@@ -67,6 +67,7 @@ public class LocalVar {
         System.out.println(floatValue);
         System.out.println(bigNumber);
         System.out.println(smallNumber);
+        System.out.println("Done");
     }
 
 }
